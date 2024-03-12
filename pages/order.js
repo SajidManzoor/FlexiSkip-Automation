@@ -1,0 +1,34 @@
+import { expect } from "@playwright/test";
+
+export class Order {
+    constructor(page) {
+        this.page = page;
+        this.addressSearch_textbox = page.getByPlaceholder('Search for address');
+        this.addressSearch_options = page.locator('#address-options');
+        this.Checkout_button = page.getByRole('button', { name: 'Checkout' });
+    }
+    
+    async searchAddress(address) {
+        await this.page.waitForLoadState()
+        await this.page.waitForLoadState('domcontentloaded');
+
+        await this.page.waitForLoadState('networkidle');
+        await this.addressSearch_textbox.fill(address);
+    }
+
+    async selectFirstOption() {
+        let option = this.addressSearch_options.first()
+        await this.page.waitForLoadState()
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForLoadState('networkidle');
+        await option.click();
+        return option.textContent()
+    }
+
+    async clickCheckout() {
+        await this.page.waitForLoadState()
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForLoadState('networkidle');
+        await this.Checkout_button.click();
+    }
+}
