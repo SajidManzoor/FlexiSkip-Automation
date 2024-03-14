@@ -6,4 +6,4 @@
 - Data Driven Testing (DDT) Framework
 - Page Object Model (POM)
 - Allure Report
-- CI integration using Github Actions
+- Continuous Integration using Github Actions
