@@ -67,11 +67,6 @@ test.fail('Create Order', async () => {
     await checkout.fillStripeDetails(cardDetails.cardNumber, cardDetails.cardExpiry, cardDetails['CVC'], cardDetails.billingName, cardDetails.country, cardDetails.zipCode)
 })
 
-// test('Change User Name', async () => {
-//     await dashboard.openSettings()
-//     await settings.updateUserName(testData.newFirstName, testData.newLastName)
-// })
-
 test('Verify FAQ page', async () => {
     await dashboard.openFAQ()
     await faq.validateFAQ()

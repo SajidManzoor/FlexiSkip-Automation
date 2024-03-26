@@ -12,7 +12,6 @@ export class Login {
         this.pin_textbox = page.getByLabel('PIN');
         this.login_btn = page.getByRole('button', { name: 'Login' });
         this.success_msg = page.getByText('Success! Welcome back!');
-
     }
 
     async verifyLoginPage() {

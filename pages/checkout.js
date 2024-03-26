@@ -46,7 +46,7 @@ export class Checkout {
         await this.confirmOrder_button.click({ timeout: 15000 });
     }
 
-    async fillStripeDetails(cardNumber, cardExpiry, cardCVC, billingName,country,zipCode) {
+    async fillStripeDetails(cardNumber, cardExpiry, cardCVC, billingName, country, zipCode) {
         await expect.soft(await this.stripe.saveCard_button).toBeVisible({ timeout: 60000 })
         if (await this.stripe.cardNumber_textbox.count() > 0) {
             await this.stripe.cardNumber_textbox.fill(String(cardNumber));

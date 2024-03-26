@@ -9,7 +9,6 @@ export class Dashboard {
         this.settings_option = this.profile_dropdown_menu.getByText('Settings')
         this.signOut_option = this.profile_dropdown_menu.getByText('Sign Out')
         this.success_message = page.getByText('Success! Logged out')
-        // this.resources_dropdown=page.locator('#resources-dropdown-menu')
         this.resources_dropdown = page.getByRole('button', { name: 'Resources' })
         this.FAQ_option = page.getByRole('link', { name: 'FAQ' })
     }

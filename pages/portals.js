@@ -7,7 +7,6 @@ export class Portals {
     async clickBookPickup() {
         await this.bookPickup_btn.click();
     }
-    
     async clickEligibility() {
         await this.eligibility_btn.click();
     }
