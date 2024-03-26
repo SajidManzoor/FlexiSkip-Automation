@@ -6,13 +6,20 @@ export class Order {
         this.addressSearch_textbox = page.getByPlaceholder('Search for address');
         this.addressSearch_options = page.locator('#address-options');
         this.Checkout_button = page.getByRole('button', { name: 'Checkout' });
+        this.cancel_button = page.getByRole('button', { name: 'Cancel' });
     }
-    
+
     async searchAddress(address) {
         await this.page.waitForLoadState()
         await this.page.waitForLoadState('domcontentloaded');
 
         await this.page.waitForLoadState('networkidle');
+
+        if (await this.cancel_button.count() > 0 ) {
+            await this.cancel_button.click({ force: true });
+            await this.searchAddress(address)
+        }
+
         await this.addressSearch_textbox.fill(address);
     }
 

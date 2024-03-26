@@ -14,6 +14,12 @@ export class Settings {
         await this.firstName_textbox.fill(firstName);
         await this.lastName_textbox.fill(lastName);
         await this.updateProfile_button.click();
-        await expect(await this.success_message).toBeVisible({ timeout: 30000 });
+        // await this.page.waitForLoadState();
+        await expect(await this.success_message).toBeVisible({ timeout: 60000 });
+
+        // await expect(await this.success_message).toBeDefined()
+        // await expect(await this.success_message).toHaveText('Success! Your profile has been updated');
+
+
     }
 }

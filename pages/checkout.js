@@ -58,5 +58,6 @@ export class Checkout {
             await this.stripe.billingName_textbox.fill(String(billingName));
         }
         await this.stripe.saveCard_button.click();
+        await expect.soft(this.page.url()).toContain('handel')
     }
 }

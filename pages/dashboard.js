@@ -9,6 +9,9 @@ export class Dashboard {
         this.settings_option = this.profile_dropdown_menu.getByText('Settings')
         this.signOut_option = this.profile_dropdown_menu.getByText('Sign Out')
         this.success_message = page.getByText('Success! Logged out')
+        // this.resources_dropdown=page.locator('#resources-dropdown-menu')
+        this.resources_dropdown = page.getByRole('button', { name: 'Resources' })
+        this.FAQ_option = page.getByRole('link', { name: 'FAQ' })
     }
 
     async selectPortal(portalName) {
@@ -17,17 +20,27 @@ export class Dashboard {
     }
 
     async openSettings() {
-        await this.profile_dropdown.click({timeout:10000});
+        await this.page.goto('/')
+        await this.profile_dropdown.click({ timeout: 10000 });
         await this.settings_option.click();
         await this.page.waitForLoadState();
         await expect(this.page.url()).toContain('settings');
     }
 
     async signOut() {
+        await this.page.goto('/')
         await this.profile_dropdown.click();
         await this.signOut_option.click();
         await this.page.waitForLoadState();
         await expect(await this.success_message).toBeVisible({ timeout: 10000 });
     }
 
+    async openFAQ() {
+        await this.page.goto('/')
+        await this.page.waitForLoadState();
+        await this.resources_dropdown.click({ force: true });
+        await this.FAQ_option.click({ force: true });
+        await this.page.waitForLoadState();
+        await expect(this.page.url()).toContain('faq');
+    }
 }

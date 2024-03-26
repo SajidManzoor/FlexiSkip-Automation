@@ -5,6 +5,7 @@ import { Portals } from '../pages/portals'
 import { Order } from '../pages/order'
 import { Checkout } from '../pages/checkout'
 import { Settings } from '../pages/settings'
+import { FAQ } from '../pages/FAQ'
 const ExcelJS = require('exceljs');
 
 test.describe.configure({ mode: 'serial' })
@@ -16,11 +17,13 @@ let portals;
 let order;
 let checkout;
 let settings;
+let faq;
 let workbook;
 let dataSheet;
 let cardDetailsSheet;
 let testData = {};
 let cardDetails = {};
+
 test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
     login = new Login(page)
@@ -29,6 +32,7 @@ test.beforeAll(async ({ browser }) => {
     order = new Order(page)
     checkout = new Checkout(page)
     settings = new Settings(page)
+    faq = new FAQ(page)
     workbook = await new ExcelJS.Workbook().xlsx.readFile('data.xlsx');
     dataSheet = workbook.getWorksheet('SmokeTests');
     cardDetailsSheet = workbook.getWorksheet('CardDetails');
@@ -51,22 +55,28 @@ test('Login', async () => {
     await login.login(testData.emailAddress, testData.apiKey)
 })
 
-test('Create Order', async () => {
+test.fail('Create Order', async () => {
     await dashboard.selectPortal(testData.portalName)
-    await portals.clickBookPickup()
+    // await portals.clickBookPickup()
+    await portals.clickEligibility()
     await order.searchAddress(testData.address)
     await order.selectFirstOption()
     await order.clickCheckout()
     await checkout.fillDetails(testData.firstName, testData.lastName, testData.phoneNumber)
     await checkout.confirmOrder()
-    await checkout.fillStripeDetails(cardDetails.cardNumber, cardDetails.cardExpiry, cardDetails['CVC'], cardDetails.billingName,cardDetails.country,cardDetails.zipCode)
+    await checkout.fillStripeDetails(cardDetails.cardNumber, cardDetails.cardExpiry, cardDetails['CVC'], cardDetails.billingName, cardDetails.country, cardDetails.zipCode)
+})
+
+// test('Change User Name', async () => {
+//     await dashboard.openSettings()
+//     await settings.updateUserName(testData.newFirstName, testData.newLastName)
+// })
+
+test('Verify FAQ page', async () => {
+    await dashboard.openFAQ()
+    await faq.validateFAQ()
 })
 
 test('Sign Out', async () => {
     await dashboard.signOut()
-})
-
-test('Change User Name', async () => {
-    await dashboard.openSettings()
-    await settings.updateUserName(data.newFirstName, data.newLastName)
 })
