@@ -47,7 +47,6 @@ test.beforeAll(async ({ browser }) => {
             cardDetails[row.values[1]] = row.values[2];
         }
     })
-
 });
 
 test('Login', async () => {
@@ -57,7 +56,6 @@ test('Login', async () => {
 
 test.fail('Create Order', async () => {
     await dashboard.selectPortal(testData.portalName)
-    // await portals.clickBookPickup()
     await portals.clickEligibility()
     await order.searchAddress(testData.address)
     await order.selectFirstOption()

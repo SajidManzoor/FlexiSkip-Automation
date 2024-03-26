@@ -16,15 +16,15 @@ export class Login {
 
     async verifyLoginPage() {
         await this.page.waitForLoadState()
-        await expect(await this.enterEmail_text).toBeVisible({ timeout: 30000 });
-        await expect(await this.email_textbox).toBeVisible({ timeout: 60000 });
+        await expect(await this.enterEmail_text).toBeVisible();
+        await expect(await this.email_textbox).toBeVisible();
     }
 
     async goto() {
         await this.page.goto('/')
-        await expect(await this.login_link).toBeVisible({ timeout: 30000 });
+        await expect(await this.login_link).toBeVisible();
         await this.login_link.click();
-        await expect(await this.email_textbox).toBeVisible({ timeout: 30000 });
+        await expect(await this.email_textbox).toBeVisible();
     }
 
     async getPin(emailAddress, apiKey) {
@@ -41,19 +41,19 @@ export class Login {
     }
 
     async login(email, apiKey) {
-        await expect(await this.email_textbox).toBeVisible({ timeout: 30000 });
-        await expect(await this.sendPIN_btn).toBeVisible({ timeout: 30000 });
+        await expect(await this.email_textbox).toBeVisible();
+        await expect(await this.sendPIN_btn).toBeVisible();
         await this.email_textbox.click();
         await this.email_textbox.fill(email);
         await this.page.waitForTimeout(3000)
         await this.sendPIN_btn.click({ force: true });
         await this.page.waitForTimeout(5000);
-        await expect(await this.login_btn).toBeVisible({ timeout: 30000 });
-        await expect(await this.pin_textbox).toBeVisible({ timeout: 30000 });
+        await expect(await this.login_btn).toBeVisible();
+        await expect(await this.pin_textbox).toBeVisible();
         const pin = await this.getPin(email, apiKey);
         await this.pin_textbox.fill(pin);
         await this.login_btn.click();
-        await expect(await this.login_btn).not.toBeVisible({ timeout: 60000 });
-        await expect(await this.success_msg).toBeVisible({ timeout: 60000 });
+        await expect(await this.login_btn).not.toBeVisible();
+        await expect(await this.success_msg).toBeVisible();
     }
 }

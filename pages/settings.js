@@ -10,11 +10,11 @@ export class Settings {
 
     async updateUserName(firstName, lastName) {
         await this.page.waitForLoadState()
-        await expect(await this.firstName_textbox).toBeVisible({ timeout: 10000 });
+        await expect(await this.firstName_textbox).toBeVisible();
         await this.firstName_textbox.fill(firstName);
         await this.lastName_textbox.fill(lastName);
         await this.updateProfile_button.click();      
-        await expect(await this.success_message).toBeVisible({ timeout: 60000 });
+        await expect(await this.success_message).toBeVisible({timeout:10000});
     }
 
 }

@@ -20,7 +20,7 @@ export class Dashboard {
 
     async openSettings() {
         await this.page.goto('/')
-        await this.profile_dropdown.click({ timeout: 10000 });
+        await this.profile_dropdown.click();
         await this.settings_option.click();
         await this.page.waitForLoadState();
         await expect(this.page.url()).toContain('settings');
