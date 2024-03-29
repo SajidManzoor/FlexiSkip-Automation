@@ -58,6 +58,9 @@ export class Checkout {
             await this.stripe.billingName_textbox.fill(String(billingName));
         }
         await this.stripe.saveCard_button.click();
+        await this.page.waitForLoadState()
+        await this.page.waitForLoadState('domcontentloaded')
+        await this.page.waitForLoadState('networkidle')
         await expect.soft(this.page.url()).toContain('handel')
     }
 }

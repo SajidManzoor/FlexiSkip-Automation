@@ -16,7 +16,8 @@ export class Order {
         await this.page.waitForLoadState('networkidle');
 
         if (await this.cancel_button.count() > 0) {
-            await this.cancel_button.click({ force: true });
+            if (await this.cancel_button.isVisible())
+                await this.cancel_button.click({ force: true })
             await this.searchAddress(address)
         }
 

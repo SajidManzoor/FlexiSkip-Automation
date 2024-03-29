@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test } from '@playwright/test'
 import { Login } from '../pages/login'
 import { Dashboard } from '../pages/dashboard'
 import { Portals } from '../pages/portals'
@@ -65,7 +65,7 @@ test.fail('Create Order', async () => {
     await checkout.fillStripeDetails(cardDetails.cardNumber, cardDetails.cardExpiry, cardDetails['CVC'], cardDetails.billingName, cardDetails.country, cardDetails.zipCode)
 })
 
-test('Verify FAQ page', async () => {
+test('FAQ page', async () => {
     await dashboard.openFAQ()
     await faq.validateFAQ()
 })

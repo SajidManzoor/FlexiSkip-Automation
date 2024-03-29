@@ -14,21 +14,20 @@ export class Login {
         this.success_msg = page.getByText('Success! Welcome back!');
     }
 
-    async verifyLoginPage() {
-        await this.page.waitForLoadState()
-        await expect(await this.enterEmail_text).toBeVisible();
-        await expect(await this.email_textbox).toBeVisible();
-    }
-
     async goto() {
         await this.page.goto('/')
         await expect(await this.login_link).toBeVisible();
         await this.login_link.click();
         await expect(await this.email_textbox).toBeVisible();
     }
+    
+    async verifyLoginPage() {
+        await this.page.waitForLoadState()
+        await expect(await this.enterEmail_text).toBeVisible();
+        await expect(await this.email_textbox).toBeVisible();
+    }
 
     async getPin(emailAddress, apiKey) {
-        await this.page.waitForTimeout(15000)
         expect(apiKey).toBeDefined();
         const mailslurp = new MailSlurp({ apiKey })
         const id = emailAddress.split('@')[0]
