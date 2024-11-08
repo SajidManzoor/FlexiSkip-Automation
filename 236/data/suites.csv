@@ -1,5 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"failed","Sat Oct 19 01:07:38 GMT 2024","Sat Oct 19 01:07:54 GMT 2024","16070","chromium","SmokeTests.spec.js","","","","Login",""
-"skipped","Sat Oct 19 01:07:54 GMT 2024","Sat Oct 19 01:07:54 GMT 2024","0","chromium","SmokeTests.spec.js","","","","FAQ page",""
-"skipped","Sat Oct 19 01:07:54 GMT 2024","Sat Oct 19 01:07:54 GMT 2024","0","chromium","SmokeTests.spec.js","","","","Create Order",""
-"skipped","Sat Oct 19 01:07:54 GMT 2024","Sat Oct 19 01:07:54 GMT 2024","0","chromium","SmokeTests.spec.js","","","","Sign Out",""
