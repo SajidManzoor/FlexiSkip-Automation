@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","0","Sign Out","chromium","Fri Nov 15 01:12:53 GMT 2024","skipped","Fri Nov 15 01:12:53 GMT 2024","","SmokeTests.spec.js","",""
+"","1","FAQ page","chromium","Fri Nov 15 01:12:53 GMT 2024","skipped","Fri Nov 15 01:12:53 GMT 2024","","SmokeTests.spec.js","",""
+"","0","Create Order","chromium","Fri Nov 15 01:12:53 GMT 2024","skipped","Fri Nov 15 01:12:53 GMT 2024","","SmokeTests.spec.js","",""
+"","16330","Login","chromium","Fri Nov 15 01:12:37 GMT 2024","failed","Fri Nov 15 01:12:53 GMT 2024","","SmokeTests.spec.js","",""
